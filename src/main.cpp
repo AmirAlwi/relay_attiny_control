@@ -7,13 +7,17 @@ void setup() {
 
 void get_input() {
   int lastRead;
+  char val[2];
+  int val2;
   // when there are no characters to read, or the character isn't a newline
   while (true) { // loop forever
     if (DigiUSB.available()) {
       // something to read
       lastRead = DigiUSB.read();
+      itoa(lastRead,val,10);
+      val2 = atoi(val);
       DigiUSB.write(lastRead);
-      
+      DigiUSB.write(val2);
       if (lastRead == '\n') {
         break; // when we get a newline, break out of loop
       }
